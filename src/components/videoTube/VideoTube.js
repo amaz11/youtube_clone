@@ -1,9 +1,10 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const VideoTube = () => {
   return (
-    <div className="videoTube">
-      <p>
+    <Box flex={6} p={1} m={2}>
+      <Typography variant="p" align="justify">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eligendi
         sed recusandae error nostrum similique provident minus fugit voluptates
         ex aperiam, debitis quidem blanditiis molestias deserunt. Temporibus
@@ -114,8 +115,8 @@ const VideoTube = () => {
         repudiandae fuga sed, libero neque vitae maxime consequuntur! Sapiente
         fugit magni eligendi dignissimos ab reiciendis illum perferendis
         incidunt praesentium impedit laudantium, natus voluptatem.
-      </p>
-    </div>
+      </Typography>
+    </Box>
   );
 };
 

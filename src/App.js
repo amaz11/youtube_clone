@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <div className="gapContain" />
       <div className="container">
         <Sidebar />
         <VideoTube />
