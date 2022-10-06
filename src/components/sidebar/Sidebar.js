@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   List,
   ListItem,
   ListItemButton,
@@ -7,8 +8,11 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
+import HomeIcon from "@mui/icons-material/Home";
+import ExploreIcon from "@mui/icons-material/Explore";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
+import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import HistoryIcon from "@mui/icons-material/History";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import React from "react";
 
@@ -26,19 +30,58 @@ const Sidebar = ({ setMode, mode }) => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary="Inbox" />
+              <ListItemText primary="Home" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <DraftsIcon />
+                <ExploreIcon />
               </ListItemIcon>
-              <ListItemText primary="Drafts" />
+              <ListItemText primary="Explore" />
             </ListItemButton>
           </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <SubscriptionsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Subscription" />
+            </ListItemButton>
+          </ListItem>
+          <hr />
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <VideoLibraryIcon />
+              </ListItemIcon>
+              <ListItemText primary="Library" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HistoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="History" />
+            </ListItemButton>
+          </ListItem>
+          <hr />
+          <ListItem
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              // padding: "5px",
+              width: "150px",
+            }}
+            disablePadding
+          >
+            <ListItemText primary="Sign in For Like and Subscription" />
+            <Button>Sign in</Button>
+          </ListItem>
+          <hr />
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
