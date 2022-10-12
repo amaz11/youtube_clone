@@ -25,7 +25,7 @@ const VideoTube = ({ type }) => {
         }}
       >
         {videos.map((video) => (
-          <Card />
+          <Card video={video} />
         ))}
       </Box>
     </Box>
