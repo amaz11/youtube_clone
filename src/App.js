@@ -1,9 +1,12 @@
-import { Box, createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
-import Navbar from "./components/navbar/Navbar";
-import Sidebar from "./components/sidebar/Sidebar";
-import VideoTube from "./components/videoTube/VideoTube";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import NavBar from "./components/navbar/Navbar";
+import SignIn from "./components/SignIn/SignIn";
+import SignUp from "./components/SignUp/SignUp";
+import VideoPage from "./components/VideoPage";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -14,16 +17,22 @@ function App() {
   });
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
-        <div className="App">
-          <Navbar />
-          <div className="gapContain" />
-          <div className="container">
-            <Sidebar setMode={setMode} mode={mode} />
-            <VideoTube />
-          </div>
-        </div>
-      </Box>
+      <NavBar />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            index
+            element={<Home setMode={setMode} mode={mode} />}
+          />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="video/test"
+            element={<VideoPage setMode={setMode} mode={mode} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

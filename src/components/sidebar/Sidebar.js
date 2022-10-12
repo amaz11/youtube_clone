@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -14,7 +15,7 @@ import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import HistoryIcon from "@mui/icons-material/History";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import React from "react";
+import { Link } from "react-router-dom";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 const Sidebar = ({ setMode, mode }) => {
@@ -23,7 +24,7 @@ const Sidebar = ({ setMode, mode }) => {
       // bgcolor={"blueviolet"}
       flex={1}
       p={2}
-      sx={{ display: { xs: "block", sm: "block" } }}
+      sx={{ display: { xs: "none", sm: "block" } }}
     >
       <Box position={"fixed"}>
         <List>
@@ -79,7 +80,9 @@ const Sidebar = ({ setMode, mode }) => {
             disablePadding
           >
             <ListItemText primary="Sign in For Like and Subscription" />
-            <Button>Sign in</Button>
+            <Button>
+              <Link to="/signin">Sign in</Link>
+            </Button>
           </ListItem>
           <hr />
           <ListItem disablePadding>

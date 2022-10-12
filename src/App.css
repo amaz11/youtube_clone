@@ -1,6 +1,9 @@
+* {
+  outline: red 1px;
+}
 .container {
   display: flex;
-  text-align: center;
+  /* text-align: center; */
   align-items: flex-start;
   justify-content: space-between;
 }
