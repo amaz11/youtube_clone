@@ -33,7 +33,9 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <ListItemText primary="Home" />
+              </Link>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -41,7 +43,9 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <ExploreIcon />
               </ListItemIcon>
-              <ListItemText primary="Explore" />
+              <Link to="/trends" style={{ textDecoration: "none" }}>
+                <ListItemText primary="Explore" />
+              </Link>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -49,7 +53,9 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <SubscriptionsIcon />
               </ListItemIcon>
-              <ListItemText primary="Subscription" />
+              <Link to="/sub" style={{ textDecoration: "none" }}>
+                <ListItemText primary="Subscription" />
+              </Link>
             </ListItemButton>
           </ListItem>
           <hr />
@@ -81,7 +87,9 @@ const Sidebar = ({ setMode, mode }) => {
           >
             <ListItemText primary="Sign in For Like and Subscription" />
             <Button>
-              <Link to="/signin">Sign in</Link>
+              <Link to="/signin" style={{ textDecoration: "none" }}>
+                Sign in
+              </Link>
             </Button>
           </ListItem>
           <hr />

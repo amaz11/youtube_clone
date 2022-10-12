@@ -1,8 +1,18 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { apibase } from "../../axios/axiosApi";
 import Card from "../Card";
 
-const VideoTube = () => {
+const VideoTube = ({ type }) => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await apibase.get(`/videos/${type}`);
+      setVideos(res.data);
+    };
+    fetchVideos();
+  }, [type]);
   return (
     <Box flex={7} p={1} m={1}>
       <Box
@@ -14,14 +24,9 @@ const VideoTube = () => {
           justifyContent: "space-evenly",
         }}
       >
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {videos.map((video) => (
+          <Card />
+        ))}
       </Box>
     </Box>
   );

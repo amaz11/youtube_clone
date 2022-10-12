@@ -21,9 +21,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
             index
-            element={<Home setMode={setMode} mode={mode} />}
+            element={<Home setMode={setMode} mode={mode} type="rendom" />}
+          />
+          <Route
+            path="/trends"
+            element={<Home setMode={setMode} mode={mode} type="trends" />}
+          />
+          <Route
+            path="/sub"
+            element={<Home setMode={setMode} mode={mode} type="sub" />}
           />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
