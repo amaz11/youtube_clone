@@ -13,6 +13,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import { apibase } from "../../axios/axiosApi";
+import { useDispatch } from "react-redux";
+import { loginFaild, loginStart, loginSuccess } from "../../redux/userSlice";
 
 function Copyright(props) {
   return (
@@ -35,6 +37,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -42,13 +45,18 @@ export default function SignIn() {
       name: data.get("name"),
       password: data.get("password"),
     };
-    // const {name,password} = dataObj
-    const res = await apibase.post("/auth/signin", dataObj);
-    console.log(res.data);
-    // console.log({
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
+    dispatch(loginStart());
+    try {
+      // const {name,password} = dataObj
+      const res = await apibase.post("/auth/signin", dataObj);
+      dispatch(loginSuccess(res.data));
+      // console.log({
+      //   email: data.get("email"),
+      //   password: data.get("password"),
+      // });
+    } catch (err) {
+      dispatch(loginFaild());
+    }
   };
 
   return (
