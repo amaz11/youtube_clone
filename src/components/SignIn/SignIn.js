@@ -15,6 +15,9 @@ import { Link } from "react-router-dom";
 import { apibase } from "../../axios/axiosApi";
 import { useDispatch } from "react-redux";
 import { loginFaild, loginStart, loginSuccess } from "../../redux/userSlice";
+import { auth, provider } from "../../firebase";
+import { signInWithPopup } from "firebase/auth";
+import { async } from "@firebase/util";
 
 function Copyright(props) {
   return (
@@ -57,6 +60,24 @@ export default function SignIn() {
     } catch (err) {
       dispatch(loginFaild());
     }
+  };
+
+  const signInwithGoogle = async () => {
+    dispatch(loginStart());
+    signInWithPopup(auth, provider)
+      .then((result) =>
+        apibase.post("/auth/google", {
+          name: result.user.displayName,
+          email: result.user.email,
+          img: result.user.photoURL,
+        })
+      )
+      .then((res) => {
+        // console.log(res)
+        dispatch(loginSuccess(res.data));
+        // navigate("/")
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -114,6 +135,14 @@ export default function SignIn() {
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
+            </Button>
+            <Button
+              onClick={signInwithGoogle}
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In Google
             </Button>
             <Grid container>
               <Grid item xs>
